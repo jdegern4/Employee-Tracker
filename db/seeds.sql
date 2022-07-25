@@ -30,4 +30,4 @@ VALUES
 ('Jean', 'Kirstein', 4, NULL),
 ('Connie', 'Springer', 10, "Reiner Braun"),
 ('Sasha', 'Blouse', 3, "Jean Kirstein"),
-('Reiner', 'Braun', 9, NULL),
+('Reiner', 'Braun', 9, NULL);
