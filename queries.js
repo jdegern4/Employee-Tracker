@@ -126,7 +126,31 @@ const addEmployee = () => {
 };
 
 const updateEmployeeRole = () => {
+    inquirer.prompt([
+        {
+            type: 'input',
+            name: 'employee',
+            message: 'Enter the ID of the employee you want to update:'
+        },
+        {
+            type: 'input',
+            name: 'role',
+            message: 'Enter the ID of their new role:'
+        }
+    ])
+    .then(function(answers) {
+        const employee = answers.employee;
+        const role = answers.role;
 
+        const sql = `UPDATE employees SET role_id = "${role}" WHERE id = "${employee}";`;
+
+        connection.query(sql, function(err, res) {
+            if (err) {
+                throw err;
+            }
+            console.log("The employee's role has been updated.");
+        })
+    })
 };
 
 module.exports = {
