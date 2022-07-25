@@ -5,14 +5,14 @@ const connection = require('./db/connection');
 const start = require('./start');
 
 const viewAllDepartments = () => {
-    const sql = `SELECT * FROM department;`;
+    const sql = `SELECT * FROM department`;
     connection.query(sql, (err, rows) => {
         console.table(rows);
     })
 };
 
 const viewAllRoles = () => {
-    const sql = `SELECT * FROM role;`;
+    const sql = `SELECT * FROM roles;`;
     connection.query(sql, (err, rows) => {
         console.table(rows);
     })
@@ -71,7 +71,7 @@ const addRole = () => {
             const roleDepartment = answers.department;
             const roleSalary = answers.salary;
 
-            const sql = `INSERT INTO role (title, department_id, salary)
+            const sql = `INSERT INTO roles (title, department_id, salary)
                 VALUES
                 ("${roleName}", "${roleDepartment}", "${roleSalary}");`;
             connection.query(sql, function (err, res) {
