@@ -1,6 +1,7 @@
 const connection = require('./db/connection');
 const inquirer = require('inquirer');
 const mysql = require('mysql2');
+const queries = require('./queries');
 
 const startMenu = () => {
     return inquirer.prompt([
@@ -12,19 +13,19 @@ const startMenu = () => {
         }])
         .then(Response => {
             if (Response.MainMenu === 'View all departments') {
-                viewAllDepartments();
+                queries.viewAllDepartments();
             } else if (Response.MainMenu === 'View all roles') {
-                viewAllRoles();
+                queries.viewAllRoles();
             } else if (Response.MainMenu === 'View all employees') {
-                viewAllEmployees();
+                queries.viewAllEmployees();
             } else if (Response.MainMenu === 'Add a department') {
-                addDepartment();
+                queries.addDepartment();
             } else if (Response.MainMenu === 'Add a role') {
-                addRole();
+                queries.addRole();
             } else if (Response.MainMenu === 'Add an employee') {
-                addEmployee();
+                queries.addEmployee();
             } else if (Response.MainMenu === 'Update an employee role') {
-                updateEmployeeRole();
+                queries.updateEmployeeRole();
             } else if (Response.MainMenu === 'Quit') {
                 console.log('Goodbye.');
                 process.exit();
@@ -33,3 +34,5 @@ const startMenu = () => {
 };
 
 startMenu();
+
+module.exports = { startMenu };
